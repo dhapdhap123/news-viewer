@@ -1,30 +1,13 @@
-import axios from "axios";
-import { React, useState } from "react";
+import { React } from "react";
+import { Route, Routes } from "../node_modules/react-router-dom/dist/index";
+import NewsPage from "./NewsPage";
+
 function App() {
-  const [data, setData] = useState(null);
-  const onClick = async () => {
-    try {
-      const response = await axios.get(
-        "https://newsapi.org/v2/top-headlines?country=kr&apiKey=318b5a093a2d4218b991bfcf0ae05515"
-      );
-      setData(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
   return (
-    <div>
-      <div>
-        <button onClick={onClick}>불러오기</button>
-      </div>
-      {data && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(data, null, 2)}
-          readOnly={true}
-        />
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<NewsPage />} />
+      <Route path="/:category" element={<NewsPage />} />
+    </Routes>
   );
 }
 
