@@ -5,12 +5,15 @@ import NewsList from "./components/NewsList";
 
 const NewsPage = () => {
   const params = useParams();
-  const category = params.category || "all";
-  console.log(category);
+  const category = params.category;
   return (
     <>
       <Categories />
-      <NewsList category={category} />
+      {category === undefined ? (
+        <h3>위에서 카테고리를 골라주세요.</h3>
+      ) : (
+        <NewsList category={category} />
+      )}
     </>
   );
 };

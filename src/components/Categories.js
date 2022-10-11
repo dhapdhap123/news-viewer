@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { NavLink } from "../../node_modules/react-router-dom/dist/index";
 
 const categories = [
@@ -76,9 +76,8 @@ const Categories = () => {
       {categories.map((c) => (
         <Category
           key={c.name}
-          exact={c.name === "all"}
           className={({ isActive }) => (isActive ? "active" : null)}
-          to={c.name === "all" ? "/" : `/${c.name}`}
+          to={c.name === "all" ? "/all" : `/${c.name}`}
         >
           {c.text}
         </Category>
